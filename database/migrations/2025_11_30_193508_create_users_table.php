@@ -18,10 +18,13 @@ return new class extends Migration
             $table->date('birthdate');
             $table->string('phone')->unique();
             $table->string('email')->unique();
+            $table->string('address')->nullable();
             $table->string('password');
             $table->enum('user_type', ['personal','professional']);
+            $table->enum('status',['active','inactive','banned'])->default('active');
             $table->string('broker_idno')->nullable();
             $table->string('fyda_fan')->nullable();
+            $table->rememberToken();
             $table->timestamps();
         });
     }
